@@ -1,0 +1,47 @@
+[
+    {
+        "name": "test1",
+        "path": "test1",
+        "map": "/home/test1",
+        "note": "",
+        "haveChildern": false,
+        "level": 0,
+        "childern": []
+    }, {
+        "name": "test2",
+        "path": "test2",
+        "map": "/home/test2",
+        "note": "",
+        "haveChildern": true,
+        "level": 0,
+        "childern": [
+            {
+                "name": "test2_1",
+                "path": "test2_1",
+                "map": "/home/test2/test2_1",
+                "note": "",
+                "haveChildern": false,
+                "level": 1,
+                "childern": []
+            }
+        ]
+    }, {
+        "name": "test3",
+        "path": "test3",
+        "map": "/home/test3",
+        "note": "",
+        "haveChildern": true,
+        "level": 0,
+        "childern": [
+            {
+                "name": "test3_1",
+                "path": "test3_1",
+                "map": "/home/test3/test3_1",
+                "note": "",
+                "haveChildern": false,
+                "level": 1,
+                "childern": []
+            }
+        ]
+    }
+]
