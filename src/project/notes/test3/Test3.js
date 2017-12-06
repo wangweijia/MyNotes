@@ -8,7 +8,7 @@ export default class Test3 extends Component {
         return (
             <div style={{display: 'flex', backgroundColor: 'yellow'}}>
                 test3------------------
-                <Route path='/home/test3/test3_1' component={Test3_1}/>
+                <Route path={`${this.props.match.url}/test3_1`} component={Test3_1}/>
                 test3++++++++++++++++++
             </div>
         );

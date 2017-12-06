@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-
-var routeJson = require('./route.json');
+import { Link, BrowserRouter } from 'react-router-dom';
+import { myRoutes } from './ComponentRoutes';
 
 export default class RouteList extends Component {
-
     renderList(items) {
         return (
             <div>
                 {items.map((item, index)=>{
                     return (
                         <div key={index}>
-                            <ListItem item={item}/>
+                            <ListItem item={item} match={this.props.match}/>
                         </div>
                     )
                 })}
@@ -22,7 +20,7 @@ export default class RouteList extends Component {
     render() {
         return (
             <div style={{display: 'flex', flexDirection: 'column', width: 250}}>
-                {this.renderList(routeJson)}
+                {this.renderList(myRoutes)}
             </div>
         );
     }
@@ -39,18 +37,20 @@ class ListItem extends Component {
 
     render() {
         var item = this.props.item;
-        var marginLeft = 15 * item.level + 15;
+        var paddingLeft = 10 * item.level + 15;
         var haveChildern = item.haveChildern;
         var open = this.state.open && haveChildern;
         return (
-            <div style={{marginLeft: marginLeft}} onClick={()=>{
-                console.log(`${item.name} onClick`);
-                
+            <div style={{paddingLeft: paddingLeft, backgroundColor: 'white'}} onClick={(event)=>{
+                this.setState({
+                    open: !this.state.open
+                })
+                event.stopPropagation();
             }}>
-                <Link to={item.map}>{item.name}</Link>
+                <Link to={`${this.props.match.url}${item.path}`}>{item.name}</Link>
                 {open && item.childern.map((item, index)=>{
                     return (
-                        <ListItem key={index} item={item}/>
+                        <ListItem key={index} item={item} match={this.props.match}/>
                     )
                 })}
             </div>
