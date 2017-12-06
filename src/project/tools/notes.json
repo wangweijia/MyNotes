@@ -1,0 +1,43 @@
+[{
+    "name": "test1",
+    "maps": [
+        "notes",
+        "test1"
+    ],
+    "component": "Test1",
+    "childern": []
+}, {
+    "name": "test2",
+    "maps": [
+        "notes",
+        "test2"
+    ],
+    "component": "Test2",
+    "childern": [{
+        "name": "test2_1",
+        "maps": [
+            "notes",
+            "test2",
+            "test2_1"
+        ],
+        "component": "Test2_1",
+        "childern": []
+    }]
+}, {
+    "name": "test3",
+    "maps": [
+        "notes",
+        "test3"
+    ],
+    "component": "Test3",
+    "childern": [{
+        "name": "test3_1",
+        "maps": [
+            "notes",
+            "test3",
+            "test3_1"
+        ],
+        "component": "Test3_1",
+        "childern": []
+    }]
+}]
