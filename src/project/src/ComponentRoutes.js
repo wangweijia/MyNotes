@@ -43,7 +43,17 @@ export const myRoutes = [
                 component: Test3_1,
                 level: 1,
                 exact: true,
-                haveChildern: false
+                haveChildern: true,
+                childern: [
+                    {
+                        name: "test3_1_1",
+                        path: "/test3/test3_1/test3_1_1",
+                        component: Test3_1,
+                        level: 2,
+                        exact: true,
+                        haveChildern: false,
+                    }
+                ]
             }
         ]
     }

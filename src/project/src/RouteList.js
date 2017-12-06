@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { myRoutes } from './ComponentRoutes';
 
 export default class RouteList extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showMenu: true
+        }
+    }
+
     renderList(items) {
         return (
             <div>
@@ -18,9 +26,19 @@ export default class RouteList extends Component {
     }
 
     render() {
+        var height = window.innerHeight;
+        var width = this.state.showMenu?250:0;
+        var padding = this.state.showMenu?15:0;
         return (
-            <div style={{display: 'flex', flexDirection: 'column', width: 250}}>
-                {this.renderList(myRoutes)}
+            <div style={{display: 'flex', heigh: height}}>
+                <div style={{display: 'flex', flex:1, flexDirection: 'column', padding: padding, width: width}}>
+                    {this.renderList(myRoutes)}
+                </div>
+                <div style={{display: 'flex', width: 15, backgroundColor: 'blue'}} onClick={(event)=>{
+                    this.setState({
+                        showMenu: !this.state.showMenu
+                    })
+                }}/>
             </div>
         );
     }
@@ -37,7 +55,7 @@ class ListItem extends Component {
 
     render() {
         var item = this.props.item;
-        var paddingLeft = 10 * item.level + 15;
+        var paddingLeft = 10 * item.level;
         var haveChildern = item.haveChildern;
         var open = this.state.open && haveChildern;
         return (
