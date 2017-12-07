@@ -1,43 +1,7 @@
 class NewCompenentRoutes {
     constructor() {
-        this.fs = require('fs');
-    }
-
-    readFile(file) {
-        return this.fs.readFileSync(file);
-    }
-
-    readJson(file) {
-        var result = JSON.parse(this.readFile(file));
-        return result;
-    }
-
-    clearFile(file) {
-        this.fs.writeFile(file, '', (error)=>{
-            if (error) {
-                console.log("write error");
-                console.log(error);
-            }
-        })
-    }
-
-    writeFile(file, data) {
-        this.fs.appendFile(file, data, (error)=>{
-            if (error) {
-                console.log("write error");
-                console.log(error);
-            }
-        })
-    }
-
-    writeFileLine(file, data) {
-        this.writeFile(file, data + '\n');
-    }
-
-    writeFileWithArray(file, array) {
-        for (var i = 0; i < array.length; i++) {
-            this.writeFileLine(file, array[i]);
-        }
+        var {MyTools} = require('./tools.js');
+        this.myTools = new MyTools();
     }
 
     newImport(item) {
@@ -103,15 +67,15 @@ class NewCompenentRoutes {
     }
 }
 
-var jsonFile = './notes.json';
+var jsonFile = './src/notes.json';
 var jsFile = '../src/ComponentRoutes.js';
 
 var n = new NewCompenentRoutes();
-n.clearFile(jsFile);
+n.myTools.clearFile(jsFile);
 
-var j = n.readJson(jsonFile);
+var j = n.myTools.readJson(jsonFile);
 var t = n.getAllImport(j);
-n.writeFileWithArray(jsFile, t);
+n.myTools.writeFileWithArray(jsFile, t);
 
 var s = n.allRouteToString(j);
-n.writeFileLine(jsFile, s);
+n.myTools.writeFileLine(jsFile, s);

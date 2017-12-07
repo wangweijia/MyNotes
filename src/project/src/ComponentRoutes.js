@@ -1,6 +1,6 @@
 import Test1 from '../notes/test1/Test1';
-import Test2 from '../notes/test2/Test2';
 import Test2_1 from '../notes/test2/test2_1/Test2_1';
+import Test2 from '../notes/test2/Test2';
 import Test3 from '../notes/test3/Test3';
 import Test3_1 from '../notes/test3/test3_1/Test3_1';
 export const myRoutes = [{
