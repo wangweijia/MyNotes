@@ -1,5 +1,6 @@
 var {NodeItem} = require('./model/nodeItem.js');
 var {MyTools} = require('./tools.js');
+var {NewCompenentRoutes} = require('./newCompenentRoutes.js');
 
 class NewNote {
     constructor() {
@@ -43,7 +44,7 @@ class NewNote {
         this.myTools.writeFile(newComponent, tempCompontent);
     }
 
-    createNewRouteJson(info, path) {
+    create(info, path) {
         var i = this.notesObj.getNodeItemByPath(path);
         var n = i.insertNode(info);
         var newJson = this.notesObj.objNode();
@@ -51,13 +52,18 @@ class NewNote {
         this.myTools.writeJsonFile(this.jsonFile, newJson);
 
         this.createNewComponent(n.objNode());
+
+        var newCompenentRoutes = new NewCompenentRoutes();
+        newCompenentRoutes.create();
     }
 }
 
-var n = new NewNote();
+exports.NewNote = NewNote;
 
-n.createNewRouteJson({
-    "name": "test6_1",
-    "nodeNmae": "test6_1",
-    "component": "Test6_1",
-}, [1, 0]);
+// var n = new NewNote();
+//
+// n.createNewRouteJson({
+//     "name": "test6_1",
+//     "nodeNmae": "test6_1",
+//     "component": "Test6_1",
+// }, [1, 0]);

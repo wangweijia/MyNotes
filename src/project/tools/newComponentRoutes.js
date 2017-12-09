@@ -1,6 +1,7 @@
+var {MyTools} = require('./tools.js');
+
 class NewCompenentRoutes {
     constructor() {
-        var {MyTools} = require('./tools.js');
         this.myTools = new MyTools();
     }
 
@@ -65,17 +66,33 @@ class NewCompenentRoutes {
 
         return `export const myRoutes = [${str}]`;
     }
+
+    create() {
+        var jsonFile = './src/notes.json';
+        var jsFile = '../src/ComponentRoutes.js';
+
+        this.myTools.clearFile(jsFile);
+
+        var j = this.myTools.readJson(jsonFile);
+        var t = this.getAllImport(j);
+        this.myTools.writeFileWithArray(jsFile, t);
+
+        var s = this.allRouteToString(j);
+        this.myTools.writeFileLine(jsFile, s);
+    }
 }
 
-var jsonFile = './src/notes.json';
-var jsFile = '../src/ComponentRoutes.js';
+exports.NewCompenentRoutes = NewCompenentRoutes;
 
-var n = new NewCompenentRoutes();
-n.myTools.clearFile(jsFile);
-
-var j = n.myTools.readJson(jsonFile);
-var t = n.getAllImport(j);
-n.myTools.writeFileWithArray(jsFile, t);
-
-var s = n.allRouteToString(j);
-n.myTools.writeFileLine(jsFile, s);
+// var jsonFile = './src/notes.json';
+// var jsFile = '../src/ComponentRoutes.js';
+//
+// var n = new NewCompenentRoutes();
+// n.myTools.clearFile(jsFile);
+//
+// var j = n.myTools.readJson(jsonFile);
+// var t = n.getAllImport(j);
+// n.myTools.writeFileWithArray(jsFile, t);
+//
+// var s = n.allRouteToString(j);
+// n.myTools.writeFileLine(jsFile, s);
