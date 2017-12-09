@@ -1,10 +1,26 @@
+var {NodeItem} = require('./model/nodeItem.js');
+var {MyTools} = require('./tools.js');
+
 class NewNote {
     constructor() {
-        var {MyTools} = require('./tools.js');
         this.myTools = new MyTools();
         this.tempFile = './src/ComponentTemplate.js';
-
         this.notes = this.myTools.readJson('./src/notes.json');
+
+        this.initNotesObj()
+    }
+
+    initNotesObj() {
+        var obj = {
+            "name": "notes",
+            "nodeNmae": "notes",
+            "maps": [
+                "notes",
+            ],
+            "component": undefined,
+            "childern": this.notes
+        }
+        this.notesObj = new NodeItem(obj, undefined, 0);
     }
 
     createNewComponent(info) {
@@ -42,16 +58,7 @@ class NewNote {
     }
 }
 
-var d = {
-    name: "my test node",
-    maps: ["notes", "test1"],
-    component: "MyTest",
-    note: "aaaa test  aaaaa test"
-}
-
-var nodes = [2,3];
-
 var n = new NewNote();
-// n.createNewComponent(d);
-var t = n.getNodeByNodes(nodes);
-console.log(t);
+var c = n.notesObj.objNode();
+
+n.myTools.writeJsonFile('./src/notes.json', c);

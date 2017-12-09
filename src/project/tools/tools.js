@@ -1,10 +1,12 @@
+var fs = require('fs');
+
 class MyTools {
     constructor() {
-        this.fs = require('fs');
+
     }
 
     readFile(file) {
-        return this.fs.readFileSync(file, 'utf-8');
+        return fs.readFileSync(file, 'utf-8');
     }
 
     readJson(file) {
@@ -13,7 +15,7 @@ class MyTools {
     }
 
     clearFile(file) {
-        this.fs.writeFile(file, '', (error)=>{
+        fs.writeFile(file, '', (error)=>{
             if (error) {
                 console.log("write error");
                 console.log(error);
@@ -21,8 +23,12 @@ class MyTools {
         })
     }
 
+    writeJsonFile(file, json) {
+        fs.writeFileSync(file, JSON.stringify(json));
+    }
+
     writeFile(file, data) {
-        this.fs.appendFile(file, data, (error)=>{
+        fs.appendFile(file, data, (error)=>{
             if (error) {
                 console.log("write error");
                 console.log(error);
