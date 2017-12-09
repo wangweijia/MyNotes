@@ -1,6 +1,5 @@
 [{
     "name": "test1",
-    "nodeIndex": 0,
     "nodeNmae": "test1",
     "maps": [
         "notes",
@@ -10,7 +9,6 @@
     "childern": []
 }, {
     "name": "test2",
-    "nodeIndex": 1,
     "nodeNmae": "test2",
     "maps": [
         "notes",
@@ -19,7 +17,6 @@
     "component": "Test2",
     "childern": [{
         "name": "test2_1",
-        "nodeIndex": 3,
         "nodeNmae": "test2_1",
         "maps": [
             "notes",
@@ -31,7 +28,6 @@
     }]
 }, {
     "name": "test3",
-    "nodeIndex": 2,
     "nodeNmae": "test3",
     "maps": [
         "notes",
@@ -40,7 +36,6 @@
     "component": "Test3",
     "childern": [{
         "name": "test3_1",
-        "nodeIndex": 5,
         "nodeNmae": "test3_1",
         "maps": [
             "notes",
