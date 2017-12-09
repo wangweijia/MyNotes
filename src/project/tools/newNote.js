@@ -59,5 +59,5 @@ var n = new NewNote();
 n.createNewRouteJson({
     "name": "test6_1",
     "nodeNmae": "test6_1",
-    "component": "Test3_1",
+    "component": "Test6_1",
 }, [1, 0]);
