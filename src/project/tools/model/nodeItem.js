@@ -54,6 +54,36 @@ class NodeItem {
             return childern;
         }
     }
+
+    getNodeItemByPath(path) {
+        if (path.length == 0) {
+            return this;
+        }
+
+        if (this.childern.length > 0) {
+            var t = this.childern[path[0]];
+            if (t) {
+                path.shift();
+                return t.getNodeItemByPath(path);
+            } else {
+                return undefined;
+            }
+        } else {
+            return this;
+        }
+    }
+
+    insertNode(item) {
+        var node = new NodeItem(item, this, this.childern.length);
+        this.childern.push(node);
+        return node;
+    }
+
+    deleteNodeSelf() {
+        if (this.parent) {
+            this.parent.childern.splice(this.index,1);
+        }
+    }
 }
 
 exports.NodeItem = NodeItem;

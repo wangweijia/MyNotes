@@ -45,6 +45,12 @@ class MyTools {
             this.writeFileLine(file, array[i]);
         }
     }
+
+    newDir(path) {
+        if (!fs.exists(path)) {
+            fs.mkdir(path);
+        }
+    }
 }
 
 exports.MyTools = MyTools;

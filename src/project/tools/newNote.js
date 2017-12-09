@@ -3,9 +3,10 @@ var {MyTools} = require('./tools.js');
 
 class NewNote {
     constructor() {
+        this.jsonFile = './src/notes.json';
         this.myTools = new MyTools();
         this.tempFile = './src/ComponentTemplate.js';
-        this.notes = this.myTools.readJson('./src/notes.json');
+        this.notes = this.myTools.readJson(this.jsonFile);
 
         this.initNotesObj()
     }
@@ -29,6 +30,9 @@ class NewNote {
         info.maps.map((item, index)=>{
             filePath += item + '/';
         })
+
+        this.myTools.newDir(filePath);
+
         var newComponent = filePath + fileName;
 
         var tempCompontent = this.myTools.readFile(this.tempFile);
@@ -39,26 +43,21 @@ class NewNote {
         this.myTools.writeFile(newComponent, tempCompontent);
     }
 
-    getNodeByNodes(nodes) {
-        var temp = this.notes;
-        for (var j = 0; j < nodes.length; j++) {
-            var node = nodes[j];
-            for (var i = 0; i < temp.length; i++) {
-                console.log("i:" + i);
+    createNewRouteJson(info, path) {
+        var i = this.notesObj.getNodeItemByPath(path);
+        var n = i.insertNode(info);
+        var newJson = this.notesObj.objNode();
 
-                if (temp[i].nodeIndex == node) {
-                    if (j == nodes.length - 1) {
-                        temp = temp[i].childern;
-                    }
-                    break;
-                }
-            }
-        }
-        return temp;
+        this.myTools.writeJsonFile(this.jsonFile, newJson);
+
+        this.createNewComponent(n.objNode());
     }
 }
 
 var n = new NewNote();
-var c = n.notesObj.objNode();
 
-n.myTools.writeJsonFile('./src/notes.json', c);
+n.createNewRouteJson({
+    "name": "test6_1",
+    "nodeNmae": "test6_1",
+    "component": "Test3_1",
+}, [1, 0]);
