@@ -1,6 +1,6 @@
 var {MyTools} = require('./tools.js');
 
-class NewCompenentRoutes {
+class NewComponentRoutes {
     constructor() {
         this.myTools = new MyTools();
     }
@@ -82,7 +82,7 @@ class NewCompenentRoutes {
     }
 }
 
-exports.NewCompenentRoutes = NewCompenentRoutes;
+exports.NewComponentRoutes = NewComponentRoutes;
 
 // var jsonFile = './src/notes.json';
 // var jsFile = '../src/ComponentRoutes.js';

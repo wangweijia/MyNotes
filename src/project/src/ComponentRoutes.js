@@ -1,4 +1,5 @@
 import Test1 from '../notes/test1/Test1';
+import WwjXx from '../notes/test1/xx/WwjXx';
 import Test2 from '../notes/test2/Test2';
 import Test2_1 from '../notes/test2/test2_1/Test2_1';
 import Test6_1 from '../notes/test2/test2_1/test6_1/Test6_1';
@@ -10,8 +11,17 @@ path:"/test1",
 component:Test1,
 level:0,
 exact:true,
+haveChildern:true,
+childern:[{
+name:"wwjlovexx",
+path:"/test1/xx",
+component:WwjXx,
+level:1,
+exact:true,
 haveChildern:false,
 childern:[]
+},
+]
 },{
 name:"test2",
 path:"/test2",

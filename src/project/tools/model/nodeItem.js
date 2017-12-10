@@ -56,15 +56,16 @@ class NodeItem {
     }
 
     getNodeItemByPath(path) {
-        if (path.length == 0) {
+        var copyPath = [...path];
+        if (copyPath.length == 0) {
             return this;
         }
 
         if (this.childern.length > 0) {
-            var t = this.childern[path[0]];
+            var t = this.childern[copyPath[0]];
             if (t) {
-                path.shift();
-                return t.getNodeItemByPath(path);
+                copyPath.shift();
+                return t.getNodeItemByPath(copyPath);
             } else {
                 return undefined;
             }
