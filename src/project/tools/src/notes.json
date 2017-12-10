@@ -1,7 +1,7 @@
 [{
-    "name": "test1",
-    "nodeNmae": "test1",
-    "maps": ["notes", "test1"],
-    "component": "Test1",
+    "name": "MyNotes",
+    "nodeNmae": "home",
+    "maps": ["notes", "home"],
+    "component": "Home",
     "childern": []
 }]
