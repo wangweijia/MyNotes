@@ -1,10 +1,10 @@
-import Test1 from '../notes/test1/Test1';
+import Home from '../notes/home/Home.js';
 
 export const myRoutes = [
     {
-        name: "test1",
-        path: "/test1",
-        component: Test1,
+        name: "MyNotes",
+        path: "/myNotes",
+        component: Home,
         level: 0,
         exact: true,
         haveChildern: false,
