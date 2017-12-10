@@ -1,7 +1,1 @@
-[{
-    "name": "MyNotes",
-    "nodeNmae": "home",
-    "maps": ["notes", "home"],
-    "component": "Home",
-    "childern": []
-}]
+[{"name":"MyNotes","nodeNmae":"home","maps":["notes","home"],"component":"Home","childern":[{"name":"介绍","nodeNmae":"recommend","maps":["notes","home","recommend"],"component":"Recommend","childern":[]}]}]
