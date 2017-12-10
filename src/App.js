@@ -8,7 +8,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    <Route path="/home" component={HomePage}/>
+                    <Route path="/customNotes" component={HomePage}/>
                 </div>
             </BrowserRouter>
         );
