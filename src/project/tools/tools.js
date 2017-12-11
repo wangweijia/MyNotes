@@ -46,10 +46,14 @@ class MyTools {
         }
     }
 
-    newDir(path) {
-        if (!fs.exists(path)) {
-            fs.mkdir(path);
-        }
+    newDirIfNotExists(path, next) {
+        fs.exists(path, (exists)=>{
+            if (!exists) {
+                fs.mkdir(path, next);
+            } else {
+                next();
+            }
+        })
     }
 }
 
