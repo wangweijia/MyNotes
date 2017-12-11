@@ -13,7 +13,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tools": "pushd ./src/project/tools; node ./newNote.js; popd"
   },
   "devDependencies": {
     "inquirer": "^4.0.1"
