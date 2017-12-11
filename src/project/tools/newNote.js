@@ -168,6 +168,8 @@ class NewNote {
         }
 
         questionInfo(path) {
+            var time = moment().unix();
+            var defaultComponent = `Com${time}`;
             var choices = [
                 {
                     type: 'input',
@@ -177,11 +179,12 @@ class NewNote {
                     type: 'input',
                     name: 'nodeNmae',
                     message: "What's your nodeNmae name?(default:create time)",
-                    default: moment()
+                    default: time
                 }, {
                     type: 'input',
                     name: 'component',
-                    message: "What's your component name?"
+                    message: "What's your component name?",
+                    default: defaultComponent
                 }
             ];
             inquirer.prompt(choices).then(answers => {
