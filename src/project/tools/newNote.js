@@ -37,16 +37,17 @@ class NewNote {
             filePath += item + '/';
         })
 
-        this.myTools.newDir(filePath);
+        // this.myTools.newDir(filePath);
+        this.myTools.newDirIfNotExists(filePath, ()=>{
+            var newComponent = filePath + fileName;
 
-        var newComponent = filePath + fileName;
+            var tempCompontent = this.myTools.readFile(this.tempFile);
+            tempCompontent = tempCompontent.replace('tCLASSNAMEt', info.component);
+            tempCompontent = tempCompontent.replace('tCLASSCONTENTt', info.name + ':' + info.note);
 
-        var tempCompontent = this.myTools.readFile(this.tempFile);
-        tempCompontent = tempCompontent.replace('tCLASSNAMEt', info.component);
-        tempCompontent = tempCompontent.replace('tCLASSCONTENTt', info.name + ':' + info.note);
-
-        this.myTools.clearFile(newComponent);
-        this.myTools.writeFile(newComponent, tempCompontent);
+            this.myTools.clearFile(newComponent);
+            this.myTools.writeFile(newComponent, tempCompontent);
+        })
     }
 
     create(info, path) {
