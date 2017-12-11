@@ -68,8 +68,21 @@ class NewNote {
 
     questionWithPath(path) {
         var node = this.notesObj.getNodeItemByPath(path);
+        var separator = new inquirer.Separator();
+        var message = 'what next do?\ncurrent path:';
 
-        var qi1Choices = [];
+        var pathMpas = node.newMaps();
+        console.log(pathMpas);
+
+        for (var i = 0; i < pathMpas.length; i++) {
+            message += '->(' + pathMpas[i] + ')';
+        }
+
+        var qi1Choices = ['edit', separator];
+        if (node.parent) {
+            qi1Choices = ['back', ...qi1Choices];
+        }
+
         for (var i = 0; i < node.childern.length; i++) {
             var item = `${i})${node.childern[i].nodeNmae}`;
             qi1Choices.push(item);
@@ -78,35 +91,54 @@ class NewNote {
         var qi1 = {
             type: 'list',
             name: 'path',
-            message: 'note path?',
+            message: message,
             choices: qi1Choices,
             filter: (val) => {
-                var index = val.split(')')[0];
-                return [
-                    ...path,
-                    index
-                ];
+                var sp = val.split(")");
+                var newPath = {};
+                if (sp.length > 1) {
+                    newPath.command = 'next';
+                    var index = val.split(')')[0];
+                    newPath.path = [ ...path, index];
+                } else {
+                    newPath.command = val;
+                    newPath.path = path;
+                }
+                return newPath;
             }
         }
 
         inquirer.prompt([qi1]).then(answers => {
-            this.questionNextStep(answers.path);
+            switch (answers.path.command) {
+                case 'next': {
+                    this.questionWithPath(answers.path.path);
+                }
+                    break;
+                case 'edit': {
+                    this.questionNextStep(answers.path.path);
+                }
+
+                    break;
+                case 'back': {
+                    path.pop();
+                    this.questionWithPath(path);
+                }
+
+                    break;
+                default:
+
+            }
+
         });
     }
 
     questionNextStep(path) {
         var node = this.notesObj.getNodeItemByPath(path);
-
-        var qi2Choices = ['create', 'delete', 'edit', 'no'];
-        if (path.length > 1) {
-            qi2Choices = [
-                'back', ...qi2Choices
-            ];
-        }
-        if (node.childern.length > 0) {
-            qi2Choices = [
-                'next', ...qi2Choices
-            ];
+        var separator = new inquirer.Separator();
+        
+        var qi2Choices = ['new', 'edit', separator, 'cancel'];
+        if (node.parent) {
+            qi2Choices.splice(2, 0, 'delete')
         }
 
         var qi2 = {
@@ -118,17 +150,7 @@ class NewNote {
 
         inquirer.prompt([qi2]).then(answers => {
             switch (answers.do ) {
-                    case 'next' : {
-                        this.questionWithPath(path);
-                    }
-                    break;
-                    case 'back' : {
-                        path.pop();
-                        path.pop();
-                        this.questionWithPath(path);
-                    }
-                    break;
-                    case 'create' : {
+                    case 'new' : {
                         this.questionInfo(path)
                     }
                     break;
@@ -136,8 +158,7 @@ class NewNote {
                     break;
                     case 'edit' : {}
                     break;
-                    case 'no' : {
-                        path.pop();
+                    case 'cancel' : {
                         this.questionWithPath(path);
                     }
                     break;
