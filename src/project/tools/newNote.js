@@ -72,8 +72,6 @@ class NewNote {
         var message = 'what next do?\ncurrent path:';
 
         var pathMpas = node.newMaps();
-        console.log(pathMpas);
-
         for (var i = 0; i < pathMpas.length; i++) {
             message += '->(' + pathMpas[i] + ')';
         }
@@ -135,7 +133,7 @@ class NewNote {
     questionNextStep(path) {
         var node = this.notesObj.getNodeItemByPath(path);
         var separator = new inquirer.Separator();
-        
+
         var qi2Choices = ['new', 'edit', separator, 'cancel'];
         if (node.parent) {
             qi2Choices.splice(2, 0, 'delete')
