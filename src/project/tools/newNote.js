@@ -1,4 +1,5 @@
 var inquirer = require('inquirer');
+var moment = require('moment');
 var {
     NodeItem
 } = require('./model/nodeItem.js');
@@ -171,15 +172,16 @@ class NewNote {
                 {
                     type: 'input',
                     name: 'name',
-                    message: "What's your show name"
+                    message: "What's your show name?"
                 }, {
                     type: 'input',
                     name: 'nodeNmae',
-                    message: "What's your nodeNmae name"
+                    message: "What's your nodeNmae name?(default:create time)",
+                    default: moment()
                 }, {
                     type: 'input',
                     name: 'component',
-                    message: "What's your component name"
+                    message: "What's your component name?"
                 }
             ];
             inquirer.prompt(choices).then(answers => {
