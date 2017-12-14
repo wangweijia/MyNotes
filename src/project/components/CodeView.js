@@ -10,7 +10,7 @@ export default class CodeView extends Component {
             codeArray: []
         }
 
-        this.getCodeText(this.props.path);
+        this.getCodeText(this.props.src);
     }
 
     getCodeText(path) {
@@ -34,31 +34,16 @@ export default class CodeView extends Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '#f5f5f5', overflow: "auto", padding: 20, ...this.props.style}}>
+            <pre style={{backgroundColor: '#f5f5f5', overflow: "auto", padding: 20, ...this.props.style}}>
                 {
-                    this.state.codeArray.map((item, index)=>{
-                        if (item.length === 0) {
-                            return (
-                                <div key={index} style={{height: 8, width: 1}}/>
-                            )
-                        }
-                        var nCount = 0;
-                        for (var i = 0; i < item.length; i++) {
-                            var c = item[i];
-                            if (c === ' ') {
-                                nCount ++;
-                            } else {
-                                break;
-                            }
-                        }
-
+                    this.state.codeArray.map((item, index) => {
+                        var str = `${item}\n`;
                         return (
-                            <div style={{paddingLeft: nCount*8}} key={index}>{item}</div>
+                            <span key={index}>{str}</span>
                         )
                     })
                 }
-                {this.renderCopyView()}
-            </div>
+            </pre>
         );
     }
 }

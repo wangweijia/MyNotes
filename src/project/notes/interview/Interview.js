@@ -19,6 +19,8 @@ export default class Interview extends Component {
                     </li>
                     <li>GCD多线程方面的问题，锁</li>
                     <li>绘画，动画</li>
+                    <li>iOS本地数据持有化(NSUserDefault)</li>
+                    <li>http与https的区别，http的一个完整流程</li>
                     <li>js 方法中变量的作用域</li>
                 </div>
             </div>
