@@ -21,7 +21,7 @@ export default class RouteList extends Component {
     render() {
         var height = window.innerHeight;
         return (
-            <div style={{display: 'flex', flexDirection: 'column', flex: 1, backgroundColor: 'white', minHeight: height}}>
+            <div style={{display: 'flex', flexDirection: 'column', flex: 1, backgroundColor: 'white', height: height, overflow: "auto"}}>
                 {this.renderRoutes(myRoutes)}
             </div>
         );
