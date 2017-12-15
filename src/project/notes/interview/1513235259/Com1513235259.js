@@ -20,7 +20,7 @@ export default class Com1513235259 extends Component {
                 <a href='http://www.jianshu.com/p/6568f245deb2'>具体说明</a>
                 <div>
                     测试代码如下：
-                    <CodeView src={require('./src/codeText1.txt')} style={{height: 300}}/>
+                    <CodeView src={require('./src/codeText1.m')} style={{height: 300}}/>
                 </div>
                 <div>
                     <div>
