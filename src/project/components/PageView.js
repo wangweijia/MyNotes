@@ -7,8 +7,6 @@ export default class PageView extends Component {
         var children = this.props.children;
         var texts = [];
         if (typeof(children) == 'string') {
-            console.log("message");
-
             texts = this.initText(children);
         }
 
