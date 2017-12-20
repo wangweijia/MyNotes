@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {HttpHelper} from '../base/HttpHelper';
+import PageView from './PageView';
+import {HttpHelper} from '../../base/HttpHelper';
 
 export default class CodeView extends Component {
     constructor(props) {
@@ -26,13 +27,12 @@ export default class CodeView extends Component {
         })
     }
 
-    renderCopyView() {
-        return (
-            <div>copy</div>
-        )
-    }
-
     render() {
+        return (
+            <PageView style={{backgroundColor: '#f5f5f5', overflow: "auto", padding: 20, ...this.props.style}}>
+                {`${this.state.codeText}`}
+            </PageView>
+        )
         return (
             <pre style={{backgroundColor: '#f5f5f5', overflow: "auto", padding: 20, ...this.props.style}}>
                 {
